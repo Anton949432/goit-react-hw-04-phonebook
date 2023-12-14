@@ -1,4 +1,3 @@
-// App.jsx
 import React, { useReducer, useEffect } from 'react';
 import ContactForm from './ContactForm';
 import ContactList from './ContactList';
@@ -34,7 +33,7 @@ const App = () => {
   useEffect(() => {
     const storedContacts = localStorage.getItem('contacts');
     if (storedContacts) {
-      dispatch({ type: 'SET_CONTACTS', payload: JSON.parse(storedContacts) });
+      dispatch((prev) => ({ ...prev, contacts: JSON.parse(storedContacts) }));
     }
   }, []);
 
@@ -63,4 +62,5 @@ const App = () => {
 };
 
 export default App;
+
 
